@@ -15,7 +15,7 @@ private:
 	Employee();
 	~Employee();
 	virtual void payroll() = 0;
-	void hire(int, string, string, double, int);
-	void termination();
+	virtual void hire(int, string, string, double, int) = 0;
+	virtual void termination() = 0;
 };
 
