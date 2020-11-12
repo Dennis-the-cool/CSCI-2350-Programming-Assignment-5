@@ -11,7 +11,7 @@ protected:
 	double payRate;
 	int hiredDate;
 	bool fired;
-private:
+public:
 	Employee();
 	~Employee();
 	virtual void payroll() = 0;
