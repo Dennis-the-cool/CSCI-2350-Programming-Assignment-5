@@ -14,9 +14,7 @@ protected:
 private:
 	Employee();
 	~Employee();
-	virtual void serialize() = 0;
-	void deserialize();
-	void payroll();
+	virtual void payroll() = 0;
 	void hire(int, string, string, double, int);
 	void termination();
 };
