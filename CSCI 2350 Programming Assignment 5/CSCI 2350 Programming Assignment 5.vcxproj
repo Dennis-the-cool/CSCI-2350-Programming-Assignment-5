@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="TransactionReader.cpp" />
   </ItemGroup>
   <ItemGroup>
