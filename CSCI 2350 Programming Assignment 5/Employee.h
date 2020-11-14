@@ -19,3 +19,14 @@ public:
 	virtual void termination() = 0;
 };
 
+class Salary
+{
+private:
+   int dayFired;
+public:
+   Salary();
+   ~Salary();
+   void payroll();
+   void hire(int, string, string, double, int);
+   void termination();
+};
