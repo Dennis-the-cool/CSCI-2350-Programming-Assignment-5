@@ -147,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="salaryInput.txt" />
+    <Text Include="SalaryInput2.txt" />
+    <Text Include="SalaryInput3.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
