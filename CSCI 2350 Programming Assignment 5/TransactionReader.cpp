@@ -10,8 +10,21 @@ TransactionList transactionList;
 
 void processLine(string line)
 {
+	if (line.find(",") < 0)
+	{
+		cout << "Error processing transaction: " << line << endl;
+		return;
+	}
+
 	string transactionType = line.substr(0, line.find(","));
 	line = line.substr(line.find(",") + 1);
+
+	if (line.find(",") < 0)
+	{
+		cout << "Error processing transaction: " << transactionType << "," << line << endl;
+		return;
+	}
+
 	string employeeIDString = line.substr(0, line.find(","));
 	line = line.substr(line.find(",") + 1);
 
@@ -80,7 +93,8 @@ void processLine(string line)
 	}
 	else
 	{
-		// error
+		// TODO: Process error
+		cout << "Error processing transaction: " << transactionType << "," << employeeIDString << "," << line << endl;
 		return;
 	}
 
