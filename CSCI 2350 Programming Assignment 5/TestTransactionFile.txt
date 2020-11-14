@@ -1,2 +1,5 @@
 1
 hire,1,Dennis,salary,5000
+hire,1,Dennis,salary,5000
+hire,1,Dennis,salary,5000
+hire,1,Dennis,salary,5000
