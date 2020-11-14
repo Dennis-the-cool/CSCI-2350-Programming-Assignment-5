@@ -64,6 +64,10 @@ void TransactionList::addTransaction(Transaction* newTransaction)
 	{
 		newNode->priority = 5;
 	}
+	else
+	{
+		throw - 1;
+	}
 
 	// If empty, add to list
 	if (head == nullptr)
@@ -78,16 +82,23 @@ void TransactionList::addTransaction(Transaction* newTransaction)
 	Node* currentNode = head;
 	while (currentNode != nullptr)
 	{
-		if (currentNode->priority <= newNode->priority)
+		if (currentNode->priority >= newNode->priority)
 		{
 			if (currentNode == tail)
 			{
 				break;
 			}
-			currentNode->next->prev = newNode;
-			newNode = currentNode->next;
-			currentNode->next = newNode;
-			newNode->prev = currentNode;
+			newNode->next = currentNode;
+			newNode->prev = currentNode->prev;
+			if (currentNode == head)
+			{
+				head = newNode;
+			}
+			else
+			{
+				currentNode->prev->next = newNode;
+			}
+			currentNode->prev = newNode;
 			return;
 		}
 		currentNode = currentNode->next;

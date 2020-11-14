@@ -1,5 +1,6 @@
 1
+pieces,1,2
+sales,1,4.0
+termination,1
 hire,1,Dennis,salary,5000
-hire,1,Dennis,salary,5000
-hire,1,Dennis,salary,5000
-hire,1,Dennis,salary,5000
+hours,1,2.3
