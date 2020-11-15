@@ -1,6 +1,6 @@
 #include "Transaction.h"
 
-Transaction::Transaction()
+Transaction::Transaction() : transactionType(), employeeID()
 {
 }
 
@@ -8,25 +8,28 @@ Transaction::~Transaction()
 {
 }
 
-void Transaction::setTransactionType(string)
+void Transaction::setTransactionType(string newTransactionType)
 {
+	transactionType = newTransactionType;
 }
 
 string Transaction::getTransactionType()
 {
-	return string();
+	return transactionType;
 }
 
-void Transaction::setID(int)
+void Transaction::setEmployeeID(int newEmployeeID)
 {
+	employeeID = newEmployeeID;
+
 }
 
-int Transaction::getID()
+int Transaction::getEmployeeID()
 {
-	return 0;
+	return employeeID;
 }
 
-HireTransaction::HireTransaction()
+HireTransaction::HireTransaction() : name(), employeeType(), payRate()
 {
 }
 
@@ -34,34 +37,37 @@ HireTransaction::~HireTransaction()
 {
 }
 
-void HireTransaction::setName(string)
+void HireTransaction::setName(string newName)
 {
+	name = newName;
 }
 
 string HireTransaction::getName()
 {
-	return string();
+	return name;
 }
 
-void HireTransaction::setEmployeeType(string)
+void HireTransaction::setEmployeeType(string newEmployeeType)
 {
+	employeeType = newEmployeeType;
 }
 
 string HireTransaction::getEmployeeType()
 {
-	return string();
+	return employeeType;
 }
 
-void HireTransaction::setPayRate(double)
+void HireTransaction::setPayRate(double newPayRate)
 {
+	payRate = newPayRate;
 }
 
 double HireTransaction::getPayRate()
 {
-	return 0.0;
+	return payRate;
 }
 
-HoursTransaction::HoursTransaction()
+HoursTransaction::HoursTransaction() : hoursWorked()
 {
 }
 
@@ -69,16 +75,17 @@ HoursTransaction::~HoursTransaction()
 {
 }
 
-void HoursTransaction::setHoursWorked(double)
+void HoursTransaction::setHoursWorked(double newHoursWorked)
 {
+	hoursWorked = newHoursWorked;
 }
 
 double HoursTransaction::getHoursWorked()
 {
-	return 0.0;
+	return hoursWorked;
 }
 
-PiecesTransaction::PiecesTransaction()
+PiecesTransaction::PiecesTransaction() : itemsProduced()
 {
 }
 
@@ -86,11 +93,17 @@ PiecesTransaction::~PiecesTransaction()
 {
 }
 
-void PiecesTransaction::setItemsProduced(int)
+void PiecesTransaction::setItemsProduced(int newItemsProduced)
 {
+	itemsProduced = newItemsProduced;
 }
 
-SalesTransaction::SalesTransaction()
+int PiecesTransaction::getItemsProduced()
+{
+	return itemsProduced;
+}
+
+SalesTransaction::SalesTransaction() : salesAmount()
 {
 }
 
@@ -98,13 +111,14 @@ SalesTransaction::~SalesTransaction()
 {
 }
 
-void SalesTransaction::setSalesAmount(double)
+void SalesTransaction::setSalesAmount(double newSalesAmount)
 {
+	salesAmount = newSalesAmount;
 }
 
 double SalesTransaction::getSalesAmount()
 {
-	return 0.0;
+	return salesAmount;
 }
 
 TerminationTransaction::TerminationTransaction()
