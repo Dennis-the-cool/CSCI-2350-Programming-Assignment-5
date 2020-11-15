@@ -53,5 +53,30 @@ void Piecework:: hire(int, string, string, double, int)
 
 void Piecework:: termination()
 {
+
+}
+
+Commission:: Commission()
+{
+
+}
+
+Commission:: ~Commission()
+{
+
+}
+
+void Commission:: payroll()
+{
+
+}
+
+void Commission:: hire(int, string, string, double, int)
+{
+
+}
+
+void Commission:: termination()
+{
     
 }

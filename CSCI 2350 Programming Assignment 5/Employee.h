@@ -42,3 +42,15 @@ public:
 	void hire(int, string, string, double, int);
 	void termination();
 };
+
+class Commission
+{
+private:
+	double salesAmount;
+public: 
+	Commission();
+	~Commission();
+	void payroll();
+	void hire(int, string, string, double, int);
+	void termination();
+};
