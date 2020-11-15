@@ -30,3 +30,15 @@ public:
    void hire(int, string, string, double, int);
    void termination();
 };
+
+class Piecework
+{
+private: 
+	int itemsProduced; 
+public: 
+	Piecework();
+	~Piecework();
+	void payroll();
+	void hire(int, string, string, double, int);
+	void termination();
+};

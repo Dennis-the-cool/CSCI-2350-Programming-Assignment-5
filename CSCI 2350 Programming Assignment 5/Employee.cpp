@@ -29,4 +29,29 @@ void Salary:: hire(int, string, string, double, int)
 void Salary:: termination()
 {
 
-} 
+}
+
+Piecework:: Piecework()
+{
+
+}
+
+Piecework:: ~Piecework()
+{
+
+}
+
+void Piecework:: payroll()
+{
+
+}
+
+void Piecework:: hire(int, string, string, double, int)
+{
+
+}
+
+void Piecework:: termination()
+{
+    
+}
