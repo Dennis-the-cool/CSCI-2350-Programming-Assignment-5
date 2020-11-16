@@ -150,6 +150,7 @@
     <ClInclude Include="Transaction.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="HourlyInput.txt" />
     <Text Include="TestTransactionFile.txt" />
     <Text Include="salaryInput.txt" />
     <Text Include="SalaryInput2.txt" />
