@@ -19,3 +19,17 @@ public:
 	virtual void termination() = 0;
 };
 
+class Hourly
+{
+private:
+	int lastDayWorked;
+	int daysInRowWorked;
+
+public:
+	Hourly();
+	~Hourly();
+	void payroll();
+	void hire(int, string, string, double, int);
+	void termination();
+};
+
