@@ -17,5 +17,11 @@
     <Text Include="SalaryInput2.txt" />
     <Text Include="SalaryInput3.txt" />
     <Text Include="HourlyInput.txt" />
+    <Text Include="HourlyInput2.txt" />
+    <Text Include="HourlyInput3.txt" />
+    <Text Include="HourlyInput4.txt" />
+    <Text Include="HourlyInput5.txt" />
+    <Text Include="HourlyInput6.txt" />
+    <Text Include="HourlyInput7.txt" />
   </ItemGroup>
 </Project>

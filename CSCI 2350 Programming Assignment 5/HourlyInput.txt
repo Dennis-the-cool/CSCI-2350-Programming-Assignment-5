@@ -2,3 +2,4 @@
 hire,1,John,hourly,18.00
 hire,2,Chris,hourly,12.50
 hire,3,Fred,hourly,26.00
+hours,2,5.0

@@ -151,6 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="HourlyInput.txt" />
+    <Text Include="HourlyInput2.txt" />
+    <Text Include="HourlyInput3.txt" />
+    <Text Include="HourlyInput4.txt" />
+    <Text Include="HourlyInput5.txt" />
+    <Text Include="HourlyInput6.txt" />
+    <Text Include="HourlyInput7.txt" />
     <Text Include="TestTransactionFile.txt" />
     <Text Include="salaryInput.txt" />
     <Text Include="SalaryInput2.txt" />
