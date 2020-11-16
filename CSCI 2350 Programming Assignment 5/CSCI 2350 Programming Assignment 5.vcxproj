@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Transaction.cpp" />
+    <ClCompile Include="TransactionList.cpp" />
     <ClCompile Include="TransactionReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Transaction.h" />
+    <ClInclude Include="TransactionList.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TestTransactionFile.txt" />

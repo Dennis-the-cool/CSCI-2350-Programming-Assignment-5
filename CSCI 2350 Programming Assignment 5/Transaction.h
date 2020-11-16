@@ -6,14 +6,14 @@ class Transaction
 {
 protected:
 	string transactionType;
-	int id;
+	int employeeID;
 public:
 	Transaction();
 	~Transaction();
 	void setTransactionType(string);
 	string getTransactionType();
-	void setID(int);
-	int getID();
+	void setEmployeeID(int);
+	int getEmployeeID();
 };
 class HireTransaction : public Transaction
 {
@@ -49,7 +49,7 @@ public:
 	PiecesTransaction();
 	~PiecesTransaction();
 	void setItemsProduced(int);
-	int getItemsProduced()
+	int getItemsProduced();
 };
 class SalesTransaction : public Transaction
 {
