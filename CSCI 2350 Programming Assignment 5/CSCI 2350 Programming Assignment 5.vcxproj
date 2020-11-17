@@ -157,6 +157,9 @@
     <Text Include="HourlyInput5.txt" />
     <Text Include="HourlyInput6.txt" />
     <Text Include="HourlyInput7.txt" />
+    <Text Include="PieceworkInput.txt" />
+    <Text Include="PieceworkInput2.txt" />
+    <Text Include="PieceworkInput3.txt" />
     <Text Include="TestTransactionFile.txt" />
     <Text Include="salaryInput.txt" />
     <Text Include="SalaryInput2.txt" />
