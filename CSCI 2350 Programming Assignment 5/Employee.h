@@ -17,6 +17,7 @@ public:
 	virtual void payroll() = 0;
 	virtual void hire(int, string, string, double, int) = 0;
 	virtual void termination() = 0;
+	int getID();
 };
 
 class Salary
