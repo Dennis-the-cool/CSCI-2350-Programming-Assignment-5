@@ -49,6 +49,7 @@ public:
 	Piecework();
 	~Piecework();
 	void payroll();
+	void addPieces(int);
 };
 
 class Commission : public Employee

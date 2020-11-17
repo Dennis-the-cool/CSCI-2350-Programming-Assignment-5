@@ -53,10 +53,7 @@ void Hourly::payroll()
 
 }
 
-Piecework::Piecework()
-{
-
-}
+Piecework::Piecework() : itemsProduced(0) {}
 
 Piecework:: ~Piecework()
 {
@@ -65,7 +62,13 @@ Piecework:: ~Piecework()
 
 void Piecework::payroll()
 {
+    double pay = payRate * itemsProduced;
+    
+}
 
+void Piecework::addPieces(int newItems)
+{
+    itemsProduced = itemsProduced + newItems;
 }
 
 Commission::Commission()
