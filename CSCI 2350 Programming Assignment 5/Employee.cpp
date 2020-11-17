@@ -64,8 +64,15 @@ void Piecework::payroll()
 {
     double pay = payRate * itemsProduced;
     
-    File* ouputFile = fopen("outputfile.txt", "a");
+    FILE* outputFile = fopen("outputfile.txt", "a");
 
+    char space = ',';
+    fwrite(&id, sizeof(int), 1, outputFile);
+    fwrite(&space, sizeof(char), 1, outputFile);
+    fwrite(&name, sizeof(string), 1, outputFile);
+    fwrite(&space, sizeof(char), 1, outputFile);
+    fwrite(&pay, sizeof(double), 1, outputFile);
+    fclose(outputFile);
 }
 
 void Piecework::addPieces(int newItems)
