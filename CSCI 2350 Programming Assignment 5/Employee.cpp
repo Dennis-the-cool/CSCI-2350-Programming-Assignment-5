@@ -6,6 +6,20 @@ Employee::~Employee()
 {
 }
 
+void Employee:: hire(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired; 
+}
+
+void Employee:: termination()
+{
+
+}
+
 Salary:: Salary()
 {
 
@@ -21,14 +35,19 @@ void Salary:: payroll()
 
 }
 
-void Salary:: hire(int, string, string, double, int)
+Hourly:: Hourly()
 {
-    
+
 }
 
-void Salary:: termination()
+Hourly:: ~Hourly()
 {
-    
+
+}
+
+void Hourly:: payroll()
+{
+
 }
 
 Piecework:: Piecework()
@@ -46,16 +65,6 @@ void Piecework:: payroll()
 
 }
 
-void Piecework:: hire(int, string, string, double, int)
-{
-
-}
-
-void Piecework:: termination()
-{
-
-}
-
 Commission:: Commission()
 {
 
@@ -69,14 +78,4 @@ Commission:: ~Commission()
 void Commission:: payroll()
 {
 
-}
-
-void Commission:: hire(int, string, string, double, int)
-{
-
-}
-
-void Commission:: termination()
-{
-    
 }

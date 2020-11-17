@@ -14,9 +14,9 @@ protected:
 public:
 	Employee();
 	~Employee();
+	void termination();
+	void hire(int, string, string, double, int);
 	virtual void payroll() = 0;
-	virtual void hire(int, string, string, double, int) = 0;
-	virtual void termination() = 0;
 };
 
 class Salary: public Employee
@@ -27,8 +27,18 @@ public:
    Salary();
    ~Salary();
    void payroll();
-   void hire(int, string, string, double, int);
    void termination();
+};
+
+class Hourly
+{
+private:
+	int lastDayWorked;
+	int daysInRowWorked;
+public:
+	Hourly();
+	~Hourly();
+	void payroll();
 };
 
 class Piecework: public Employee
@@ -39,8 +49,6 @@ public:
 	Piecework();
 	~Piecework();
 	void payroll();
-	void hire(int, string, string, double, int);
-	void termination();
 };
 
 class Commission: public Employee
@@ -51,6 +59,4 @@ public:
 	Commission();
 	~Commission();
 	void payroll();
-	void hire(int, string, string, double, int);
-	void termination();
 };
