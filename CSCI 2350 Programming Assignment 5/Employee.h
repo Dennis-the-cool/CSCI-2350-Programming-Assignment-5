@@ -19,7 +19,7 @@ public:
 	virtual void termination() = 0;
 };
 
-class Salary
+class Salary: public Employee
 {
 private:
    int dayFired;
@@ -31,7 +31,7 @@ public:
    void termination();
 };
 
-class Piecework
+class Piecework: public Employee
 {
 private: 
 	int itemsProduced; 
@@ -43,7 +43,7 @@ public:
 	void termination();
 };
 
-class Commission
+class Commission: public Employee
 {
 private:
 	double salesAmount;
