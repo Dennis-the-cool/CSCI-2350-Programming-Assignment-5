@@ -7,6 +7,11 @@ Employee::~Employee()
 {
 }
 
+void Employee::termination()
+{
+	fired = true;
+}
+
 Hourly::Hourly() : lastDayWorked(0), daysInRowWorked(0) {}
 
 Hourly::~Hourly()

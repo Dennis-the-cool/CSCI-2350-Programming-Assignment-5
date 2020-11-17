@@ -16,7 +16,7 @@ public:
 	~Employee();
 	virtual void payroll() = 0;
 	virtual void hire(int, string, string, double, int) = 0;
-	virtual void termination() = 0;
+	void termination();
 };
 
 class Hourly
