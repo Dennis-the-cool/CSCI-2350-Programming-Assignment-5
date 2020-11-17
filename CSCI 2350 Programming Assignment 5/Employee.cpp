@@ -85,3 +85,16 @@ void Commission::payroll()
 {
 
 }
+
+void Commission::addSales(double newSales)
+{
+    if (newSales > 100000)
+    {
+        newSales = newSales * 1.015;
+    }
+    else if (newSales > 10000)
+    {
+        newSales = newSales * 1.01;
+    }
+    salesAmount = salesAmount + newSales;
+}

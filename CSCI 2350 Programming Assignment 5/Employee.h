@@ -60,4 +60,5 @@ public:
 	Commission();
 	~Commission();
 	void payroll();
+	void addSales(double);
 };
