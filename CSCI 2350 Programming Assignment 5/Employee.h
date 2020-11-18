@@ -30,7 +30,7 @@ public:
 	string payroll();
 };
 
-class Hourly
+class Hourly : public Employee
 {
 private:
 	int lastDayWorked;

@@ -113,7 +113,24 @@ Commission:: ~Commission()
 
 string Commission::payroll()
 {
+    double baseSalesCommission = payRate * salesAmount;
+    double mediumSalesCommission = (payRate + 0.01) * mediumSalesAmount;
+    double largeSalesCommission = (payRate + 0.015) * largeSalesAmount;
 
+    double totalCommission = baseSalesCommission + mediumSalesCommission + largeSalesCommission;
+
+    stringstream converter;
+
+    string idString;
+    converter << id;
+    converter >> idString;
+
+    string totalPayString;
+    converter << totalCommission;
+    converter >> totalPayString;
+
+    string payOutput = idString + "," + name + "," + totalPayString;
+    return payOutput;
 }
 
 void Commission::addSales(double newSales)
