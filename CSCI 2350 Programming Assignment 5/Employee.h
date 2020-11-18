@@ -13,7 +13,6 @@ protected:
 	int dayFired;
 public:
 	Employee();
-	Employee(int, string, string, double, int);
 	~Employee();
 	void termination(int);
 	void hire(int, string, string, double, int);
@@ -23,12 +22,12 @@ public:
 class Salary: public Employee
 {
 public:
-   Salary();
+   Salary(int, string, string, double, int);
    ~Salary();
    string payroll();
 };
 
-class Hourly
+class Hourly: public Employee
 {
 private:
 	int lastDayWorked;
@@ -38,7 +37,7 @@ private:
     double doubleHours;
     double tripleHours;
 public:
-	Hourly();
+	Hourly(int, string, string, double, int);
 	~Hourly();
 	string payroll();
 };
@@ -48,7 +47,7 @@ class Piecework: public Employee
 private:
     int itemsProduced;
 public:
-    Piecework();
+    Piecework(int, string, string, double, int);
     ~Piecework();
     string payroll();
     void addPieces(int);
@@ -61,7 +60,7 @@ private:
     double mediumSalesAmount;
     double largeSalesAmount;
 public:
-    Commission();
+    Commission(int, string, string, double, int);
     ~Commission();
     string payroll();
     void addSales(double);

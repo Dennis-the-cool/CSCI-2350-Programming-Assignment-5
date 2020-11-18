@@ -3,7 +3,12 @@
 
 Employee::Employee() : id(0), name(""), employeeType(""), payRate(0.0), hiredDate(0), dayFired(0) {}
 
-Employee::Employee(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired)
+void Employee:: termination(int date)
+{
+    dayFired = date;
+}
+
+Salary:: Salary(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired)
 {
     id = employeeID;
     name = employeeName;
@@ -11,13 +16,6 @@ Employee::Employee(int employeeID, string employeeName, string type, double empl
     payRate = employeePayRate;
     hiredDate = employeeDateHired;
 }
-
-void Employee:: termination(int date)
-{
-    dayFired = date;
-}
-
-Salary:: Salary() {}
 
 Salary:: ~Salary() {}
 
@@ -50,16 +48,30 @@ string Salary:: payroll()
     return payOutput;
 }
 
-Hourly:: Hourly(): lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0) {}
+Hourly:: Hourly(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired): lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0) 
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+}
 
 Hourly:: ~Hourly() {}
 
 string Hourly:: payroll()
 {
-
+  return "test";
 }
 
-Piecework:: Piecework(): itemsProduced(0) {}
+Piecework:: Piecework(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired): itemsProduced(0) 
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;    
+}
 
 Piecework:: ~Piecework() {}
 
@@ -77,7 +89,8 @@ string Piecework::payroll()
     converter << pay;
     converter >> payNum;
 
-    string output = id + "," + name + "," + payNum;
+    string output = idString + "," + name + "," + payNum;
+    return output;
 }
 
 void Piecework::addPieces(int newItems)
@@ -85,7 +98,14 @@ void Piecework::addPieces(int newItems)
     itemsProduced = itemsProduced + newItems;
 }
 
-Commission:: Commission(): salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0) {}
+Commission:: Commission(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired): salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0) 
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+}
 
 Commission:: ~Commission() {}
 
