@@ -2,7 +2,19 @@
 
 Employee::Employee() : id(0), name(""), employeeType(""), payRate(0.0), hiredDate(0), dayFired(0) {}
 
-Employee::Employee(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired)
+Employee:: ~Employee() {}
+
+void Employee::termination(int date)
+{
+    dayFired = date;
+}
+
+string Employee::getEmployeeType()
+{
+    return employeeType;
+}
+
+Salary::Salary(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired)
 {
     id = employeeID;
     name = employeeName;
@@ -11,21 +23,7 @@ Employee::Employee(int employeeID, string employeeName, string type, double empl
     hiredDate = employeeDateHired;
 }
 
-Employee::~Employee()
-{
-}
-
-void Employee::termination(int day)
-{
-    dayFired = day;
-}
-
-Salary::Salary() {}
-
-Salary:: ~Salary()
-{
-
-}
+Salary:: ~Salary() {}
 
 string Salary::payroll()
 {
@@ -43,59 +41,61 @@ string Salary::payroll()
 
     stringstream converter;
 
-    string idString;
     converter << id;
-    converter >> idString;
+    string idString = converter.str();
 
-    string totalPayString;
+    converter.str(string());
+
     converter << totalPay;
-    converter >> totalPayString;
+    string totalPayString = converter.str();
 
     string payOutput = idString + "," + name + "," + totalPayString;
 
     return payOutput;
 }
 
-Hourly::Hourly() : lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0){}
-
-Hourly:: ~Hourly()
+Hourly::Hourly(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired) : lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0)
 {
-
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
 }
+
+Hourly:: ~Hourly() {}
 
 string Hourly::payroll()
 {
-
+    return "test";
 }
 
-void Hourly::addHours(int, double)
+Piecework::Piecework(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired) : itemsProduced(0)
 {
-
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
 }
 
-Piecework::Piecework() : itemsProduced(0) {}
-
-Piecework:: ~Piecework()
-{
-
-}
+Piecework:: ~Piecework() {}
 
 string Piecework::payroll()
 {
     double pay = payRate * itemsProduced;
-    
+
     stringstream converter;
 
-    string idString;
     converter << id;
-    converter >> idString;
+    string idString = converter.str();
 
-    string payNum;
+    converter.str(string());
+
     converter << pay;
-    converter >> payNum;
+    string payNum = converter.str();
 
-    string output = id + "," + name + "," + payNum;
-    
+    string output = idString + "," + name + "," + payNum;
     return output;
 }
 
@@ -104,12 +104,16 @@ void Piecework::addPieces(int newItems)
     itemsProduced = itemsProduced + newItems;
 }
 
-Commission::Commission() : salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0) {}
-
-Commission:: ~Commission()
+Commission::Commission(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired) : salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0)
 {
-
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
 }
+
+Commission:: ~Commission() {}
 
 string Commission::payroll()
 {
@@ -121,13 +125,13 @@ string Commission::payroll()
 
     stringstream converter;
 
-    string idString;
     converter << id;
-    converter >> idString;
+    string idString = converter.str();
 
-    string totalPayString;
+    converter.str(string());
+
     converter << totalCommission;
-    converter >> totalPayString;
+    string totalPayString = converter.str();
 
     string payOutput = idString + "," + name + "," + totalPayString;
     return payOutput;

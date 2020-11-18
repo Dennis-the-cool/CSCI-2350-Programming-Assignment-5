@@ -6,66 +6,64 @@ using namespace std;
 class Employee
 {
 protected:
-	int id;
-	string name;
-	string employeeType;
-	double payRate;
-	int hiredDate;
-	int dayFired;
+    int id;
+    string name;
+    string employeeType;
+    double payRate;
+    int hiredDate;
+    int dayFired;
 public:
-	Employee();
-	Employee(int, string, string, double, int);
-	~Employee();
-	void termination(int);
-	virtual string payroll() = 0;
+    Employee();
+    ~Employee();
+    void termination(int);
+    void hire(int, string, string, double, int);
+    virtual string payroll() = 0;
+    string getEmployeeType();
 };
 
 class Salary : public Employee
 {
-private:
-	
 public:
-	Salary();
-	~Salary();
-	string payroll();
+    Salary(int, string, string, double, int);
+    ~Salary();
+    string payroll();
 };
 
 class Hourly : public Employee
 {
 private:
-	int lastDayWorked;
-	int daysInRowWorked;
-	double regularHours;
-	double overtimeHours;
-	double doubleHours;
-	double tripleHours;
+    int lastDayWorked;
+    int daysInRowWorked;
+    double regularHours;
+    double overtimeHours;
+    double doubleHours;
+    double tripleHours;
 public:
-	Hourly();
-	~Hourly();
-	string payroll();
-	void addHours(int, double);
+    Hourly(int, string, string, double, int);
+    ~Hourly();
+    string payroll();
 };
 
 class Piecework : public Employee
 {
 private:
-	int itemsProduced;
+    int itemsProduced;
 public:
-	Piecework();
-	~Piecework();
-	string payroll();
-	void addPieces(int);
+    Piecework(int, string, string, double, int);
+    ~Piecework();
+    string payroll();
+    void addPieces(int);
 };
 
 class Commission : public Employee
 {
 private:
-	double salesAmount;
-	double mediumSalesAmount;
-	double largeSalesAmount;
+    double salesAmount;
+    double mediumSalesAmount;
+    double largeSalesAmount;
 public:
-	Commission();
-	~Commission();
-	string payroll();
-	void addSales(double);
+    Commission(int, string, string, double, int);
+    ~Commission();
+    string payroll();
+    void addSales(double);
 };
