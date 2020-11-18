@@ -1,5 +1,4 @@
 #include "Employee.h"
-#include <sstream>
 
 Employee::Employee() : id(0), name(""), employeeType(""), payRate(0.0), hiredDate(0), dayFired(0) {}
 
