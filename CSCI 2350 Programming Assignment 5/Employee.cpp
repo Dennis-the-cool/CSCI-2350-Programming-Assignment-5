@@ -80,6 +80,11 @@ string Piecework::payroll()
     string output = id + "," + name + "," + payNum;
 }
 
+void Piecework::addPieces(int newItems)
+{
+    itemsProduced = itemsProduced + newItems;
+}
+
 Commission:: Commission(): salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0) {}
 
 Commission:: ~Commission() {}
