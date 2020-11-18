@@ -11,24 +11,23 @@ protected:
 	string employeeType;
 	double payRate;
 	int hiredDate;
-	bool fired;
+	int dayFired;
 public:
 	Employee();
+	Employee(int, string, string, double, int);
 	~Employee();
-	void termination();
-	void hire(int, string, string, double, int);
-	virtual void payroll() = 0;
+	void termination(int);
+	virtual string payroll() = 0;
 };
 
 class Salary : public Employee
 {
 private:
-	int dayFired;
+	
 public:
 	Salary();
 	~Salary();
-	void payroll();
-	void termination(int);
+	string payroll();
 };
 
 class Hourly
@@ -36,10 +35,15 @@ class Hourly
 private:
 	int lastDayWorked;
 	int daysInRowWorked;
+	double regularHours;
+	double overtimeHours;
+	double doubleHours;
+	double tripleHours;
 public:
 	Hourly();
 	~Hourly();
-	void payroll();
+	string payroll();
+	void addHours(int, double);
 };
 
 class Piecework : public Employee
@@ -49,7 +53,7 @@ private:
 public:
 	Piecework();
 	~Piecework();
-	void payroll();
+	string payroll();
 	void addPieces(int);
 };
 
@@ -57,9 +61,11 @@ class Commission : public Employee
 {
 private:
 	double salesAmount;
+	double mediumSalesAmount;
+	double largeSalesAmount;
 public:
 	Commission();
 	~Commission();
-	void payroll();
+	string payroll();
 	void addSales(double);
 };
