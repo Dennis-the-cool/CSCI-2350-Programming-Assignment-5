@@ -1,9 +1,10 @@
 #include "Employee.h"
 #include <sstream>
 
-Employee:: Employee(): id(0), name(""), employeeType(""), payRate(0.0), hiredDate(0), dayFired(0) {}
+Employee::Employee() : id(0), name(""), employeeType(""), payRate(0.0), hiredDate(0), dayFired(0) {}
 
 Employee:: ~Employee() {}
+
 void Employee:: termination(int date)
 {
     dayFired = date;
@@ -36,13 +37,13 @@ string Salary:: payroll()
 
     stringstream converter;
     
-    string idString;
     converter << id;
-    converter >> idString;
+    string idString = converter.str();
 
-    string totalPayString;
+    converter.str(string());
+
     converter << totalPay;
-    converter >> totalPayString;
+    string totalPayString = converter.str();
 
     string payOutput = idString + "," + name + "," + totalPayString;
 
@@ -82,13 +83,13 @@ string Piecework::payroll()
 
     stringstream converter;
 
-    string idString;
     converter << id;
-    converter >> idString;
+    string idString = converter.str();
+    
+    converter.str(string());
 
-    string payNum;
     converter << pay;
-    converter >> payNum;
+    string payNum = converter.str();
 
     string output = idString + "," + name + "," + payNum;
     return output;
@@ -120,14 +121,30 @@ string Commission:: payroll()
 
     stringstream converter; 
     
-    string idString;
     converter << id;
-    converter >> idString;
+    string idString = converter.str();
 
-    string totalPayString;
+    converter.str(string());
+
     converter << totalCommission;
-    converter >> totalPayString;
+    string totalPayString = converter.str();
 
     string payOutput = idString + "," + name + "," + totalPayString;
     return payOutput;
+}
+
+void Commission::addSales(double newSales)
+{
+    if (newSales > 100000)
+    {
+        largeSalesAmount = largeSalesAmount + newSales;
+    }
+    else if (newSales > 10000)
+    {
+        mediumSalesAmount = mediumSalesAmount + newSales;
+    }
+    else
+    {
+        salesAmount = salesAmount + newSales;
+    }
 }
