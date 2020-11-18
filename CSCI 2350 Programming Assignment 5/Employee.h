@@ -10,53 +10,59 @@ protected:
 	string employeeType;
 	double payRate;
 	int hiredDate;
-	bool fired;
+	int dayFired;
 public:
 	Employee();
+	Employee(int, string, string, double, int);
 	~Employee();
-	void termination();
+	void termination(int);
 	void hire(int, string, string, double, int);
-	virtual void payroll() = 0;
+	virtual string payroll() = 0;
 };
 
 class Salary: public Employee
 {
-private:
-   int dayFired;
 public:
    Salary();
    ~Salary();
-   void payroll();
-   void termination();
+   string payroll();
 };
 
 class Hourly
 {
 private:
 	int lastDayWorked;
-	int daysInRowWorked;
+    int daysInRowWorked;
+    double regularHours;
+    double overtimeHours;
+    double doubleHours;
+    double tripleHours;
 public:
 	Hourly();
 	~Hourly();
-	void payroll();
+	string payroll();
 };
 
 class Piecework: public Employee
 {
-private: 
-	int itemsProduced; 
-public: 
-	Piecework();
-	~Piecework();
-	void payroll();
+private:
+    int itemsProduced;
+public:
+    Piecework();
+    ~Piecework();
+    string payroll();
+    void addPieces(int);
 };
 
 class Commission: public Employee
 {
 private:
-	double salesAmount;
-public: 
-	Commission();
-	~Commission();
-	void payroll();
+    double salesAmount;
+    double mediumSalesAmount;
+    double largeSalesAmount;
+public:
+    Commission();
+    ~Commission();
+    string payroll();
+    void addSales(double);
 };
