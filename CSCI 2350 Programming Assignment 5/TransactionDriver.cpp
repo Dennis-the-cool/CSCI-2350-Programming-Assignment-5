@@ -149,9 +149,52 @@ Employee* processEmployeeLine(string line)
 	{
 		// TODO: Write file initialization of hourly employee
 		// lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0)
+		string lastDayWorkedString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string daysInRowWorkedString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string regularHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string overtimeHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string doubleHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string tripleHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+
+		int lastDayWorked;
+		stringstream convertLastDayWorked;
+		convertLastDayWorked << lastDayWorkedString;
+		convertLastDayWorked >> lastDayWorked;
+
+		int daysInRowWorked;
+		stringstream convertDaysInRowWorked;
+		convertDaysInRowWorked << daysInRowWorkedString;
+		convertDaysInRowWorked >> daysInRowWorked;
+
+		double regularHours;
+		stringstream convertRegularHours;
+		convertRegularHours << regularHoursString;
+		convertRegularHours >> regularHours;
+
+		double overtimeHours;
+		stringstream convertOvertimeHours;
+		convertOvertimeHours << overtimeHoursString;
+		convertOvertimeHours >> overtimeHours;
+
+		double doubleHours;
+		stringstream convertDoubleHours;
+		convertDoubleHours << doubleHoursString;
+		convertDoubleHours >> doubleHours;
+
+		double tripleHours;
+		stringstream convertTripleHours;
+		convertTripleHours << tripleHoursString;
+		convertTripleHours >> tripleHours;
+
 		if(payRate >= 10.0 && payRate <= 26.0)
 		{
-			employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired);
+			employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired, lastDayWorked, daysInRowWorked, regularHours, overtimeHours, doubleHours, tripleHours);
 		}
 		else
 		{
@@ -162,9 +205,17 @@ Employee* processEmployeeLine(string line)
 	else if (employeeType.compare("piecework") == 0)
 	{
 		// itemsProduced(0)
+		string itemsProducedString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+
+		int itemsProduced;
+		stringstream convertItemsProduced;
+		convertItemsProduced << itemsProducedString;
+		convertItemsProduced >> itemsProduced;
+
 		if(payRate >= 0.0 && payRate <= 1.0)
 		{
-			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired);
+			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired, itemsProduced);
 		}
 		else
 		{
@@ -176,9 +227,31 @@ Employee* processEmployeeLine(string line)
 	{
 		// TODO: Write file initialization of commission employee
 		// salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0)
+		string salesAmountString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string mediumSalesAmountString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string largeSalesAmountString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		
+		double salesAmount;
+		stringstream convertSalesAmount;
+		convertSalesAmount << salesAmountString;
+		convertSalesAmount >> salesAmount;
+
+		double mediumSalesAmount;
+		stringstream convertMediumSalesAmount;
+		convertMediumSalesAmount << mediumSalesAmountString;
+		convertMediumSalesAmount >> mediumSalesAmount;
+
+		double largeSalesAmount;
+		stringstream convertLargeSalesAmount;
+		convertLargeSalesAmount << largeSalesAmountString;
+		convertLargeSalesAmount >> largeSalesAmount;
+
 		if(payRate >= 0.03 && payRate <= 0.05)
 		{
-			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired);
+			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired, salesAmount, mediumSalesAmount, largeSalesAmount);
 		}
 		else
 		{

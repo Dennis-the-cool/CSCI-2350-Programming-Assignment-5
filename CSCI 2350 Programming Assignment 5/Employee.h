@@ -38,6 +38,7 @@ private:
     double tripleHours;
 public:
 	Hourly(int, string, string, double, int);
+    Hourly(int, string, string, double, int, int, int, double, double, double, double);
 	~Hourly();
 	string payroll();
     void addHours(double, int);
@@ -49,6 +50,7 @@ private:
     int itemsProduced;
 public:
     Piecework(int, string, string, double, int);
+    Piecework(int, string, string, double, int, int);
     ~Piecework();
     string payroll();
     void addPieces(int);
@@ -62,6 +64,7 @@ private:
     double largeSalesAmount;
 public:
     Commission(int, string, string, double, int);
+    Commission(int, string, string, double, int, double, double, double);
     ~Commission();
     string payroll();
     void addSales(double);

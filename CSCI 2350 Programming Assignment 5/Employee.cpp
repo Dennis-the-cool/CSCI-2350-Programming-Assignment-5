@@ -58,6 +58,21 @@ Hourly:: Hourly(int employeeID, string employeeName, string type, double employe
     hiredDate = employeeDateHired;
 }
 
+Hourly:: Hourly(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired, int lastDay, int inRow, double regular, double overtime, double doubleH, double triple)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+    lastDayWorked = lastDay;
+    daysInRowWorked = inRow;
+    regularHours = regular;
+    overtimeHours = overtime;
+    doubleHours = doubleH;
+    tripleHours = triple;
+}
+
 Hourly:: ~Hourly() {}
 
 string Hourly:: payroll()
@@ -121,6 +136,16 @@ Piecework:: Piecework(int employeeID, string employeeName, string type, double e
     hiredDate = employeeDateHired;    
 }
 
+Piecework:: Piecework(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired, int numberProduced)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+    itemsProduced = numberProduced;
+}
+
 Piecework:: ~Piecework() {}
 
 string Piecework::payroll()
@@ -153,6 +178,18 @@ Commission:: Commission(int employeeID, string employeeName, string type, double
     employeeType = type;
     payRate = employeePayRate;
     hiredDate = employeeDateHired;
+}
+
+Commission:: Commission(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired, double sales, double mediumSales, double largeSales)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+    salesAmount = sales;
+    mediumSalesAmount = mediumSales;
+    largeSalesAmount = largeSales;
 }
 
 Commission:: ~Commission() {}
