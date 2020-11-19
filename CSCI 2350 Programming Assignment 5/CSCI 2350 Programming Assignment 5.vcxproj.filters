@@ -5,6 +5,7 @@
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="TransactionReader.cpp" />
     <ClCompile Include="Hourly.cpp" />
+    <ClCompile Include="TransactionDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />

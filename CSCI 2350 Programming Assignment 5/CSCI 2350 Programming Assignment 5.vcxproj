@@ -142,6 +142,7 @@
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Hourly.cpp" />
     <ClCompile Include="Transaction.cpp" />
+    <ClCompile Include="TransactionDriver.cpp" />
     <ClCompile Include="TransactionReader.cpp" />
   </ItemGroup>
   <ItemGroup>
