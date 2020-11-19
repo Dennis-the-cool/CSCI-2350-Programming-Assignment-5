@@ -149,18 +149,42 @@ Employee* processEmployeeLine(string line)
 	{
 		// TODO: Write file initialization of hourly employee
 		// lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0)
-		employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired);
+		if(payRate >= 10.0 && payRate <= 26.0)
+		{
+			employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired);
+		}
+		else
+		{
+			cout << "Illegal payrate.";
+			throw -1;
+		}
 	}
 	else if (employeeType.compare("piecework") == 0)
 	{
 		// itemsProduced(0)
-		employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired);
+		if(payRate >= 0.0 && payRate <= 1.0)
+		{
+			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired);
+		}
+		else
+		{
+			cout << "Illegal payrate.";
+			throw -1;
+		}
 	}
 	else if (employeeType.compare("commission") == 0)
 	{
 		// TODO: Write file initialization of commission employee
 		// salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0)
-		employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired);
+		if(payRate >= 0.03 && payRate <= 0.05)
+		{
+			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired);
+		}
+		else
+		{
+			cout << "Illegal payrate.";
+			throw -1;
+		}
 	}
 	else
 	{
