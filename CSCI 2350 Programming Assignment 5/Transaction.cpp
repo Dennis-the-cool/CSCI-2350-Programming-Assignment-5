@@ -21,7 +21,6 @@ string Transaction::getTransactionType()
 void Transaction::setEmployeeID(int newEmployeeID)
 {
 	employeeID = newEmployeeID;
-
 }
 
 int Transaction::getEmployeeID()
