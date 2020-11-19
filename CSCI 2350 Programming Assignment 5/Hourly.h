@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <String>
 using namespace std;
 
@@ -14,5 +14,5 @@ public:
 	void payroll();
 	void hire(int, string, string, double, int);
 	void termination();
-};
+};*/
 

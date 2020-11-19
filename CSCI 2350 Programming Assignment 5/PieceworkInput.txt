@@ -1,5 +1,5 @@
 1
 hire,1,John,piecework,0.81
 hire,2,Chris,piecework,0.50
-hire,3,Fred,piecework,0.26
 pieces,2,500
+hire,3,Fred,piecework,0.26

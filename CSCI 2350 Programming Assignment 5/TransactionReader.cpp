@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -14,4 +14,4 @@ int main()
 	}
 	file.close();
 	return 0;
-}
+}*/

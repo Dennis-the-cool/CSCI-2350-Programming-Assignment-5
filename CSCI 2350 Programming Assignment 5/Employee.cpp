@@ -9,9 +9,9 @@ void Employee::termination(int date)
     dayFired = date;
 }
 
-string Employee::getEmployeeType()
+int Employee::getID()
 {
-    return employeeType;
+    return id;
 }
 
 Salary::Salary(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired)
@@ -54,6 +54,24 @@ string Salary::payroll()
     return payOutput;
 }
 
+string Salary::serialize()
+{
+    string serialized = "";
+    serialized.append(to_string(id));
+    serialized.append(",");
+    serialized.append(name);
+    serialized.append(",");
+    serialized.append(employeeType);
+    serialized.append(",");
+    serialized.append(to_string(payRate));
+    serialized.append(",");
+    serialized.append(to_string(hiredDate));
+    serialized.append(",");
+    serialized.append(to_string(dayFired));
+
+    return serialized;
+}
+
 Hourly::Hourly(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired) : lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0)
 {
     id = employeeID;
@@ -63,11 +81,99 @@ Hourly::Hourly(int employeeID, string employeeName, string type, double employee
     hiredDate = employeeDateHired;
 }
 
+Hourly::Hourly(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired, int lastDay, int inRow, double regular, double overtime, double doubleH, double triple)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+    lastDayWorked = lastDay;
+    daysInRowWorked = inRow;
+    regularHours = regular;
+    overtimeHours = overtime;
+    doubleHours = doubleH;
+    tripleHours = triple;
+}
+
 Hourly:: ~Hourly() {}
 
 string Hourly::payroll()
 {
-    return "test";
+    double regularHoursPay = regularHours * payRate;
+    double overtimeHoursPay = overtimeHours * payRate * 1.5;
+    double doubleHoursPay = doubleHours * payRate * 2.0;
+    double tripleHoursPay = tripleHours * payRate * 3.0;
+
+    double totalPay = regularHoursPay + overtimeHoursPay + doubleHoursPay + tripleHoursPay;
+
+    string output = id + "," + name + "," + to_string(totalPay);
+
+    return output;
+}
+
+void Hourly::addHours(double hoursAdd, int day)
+{
+    if (day == (lastDayWorked + 1))
+    {
+        daysInRowWorked++;
+    }
+    else
+    {
+        daysInRowWorked = 1;
+    }
+
+    lastDayWorked = day;
+
+    if (hoursAdd > 8 && daysInRowWorked < 6)
+    {
+        overtimeHours += hoursAdd - 8;
+        regularHours += 8;
+    }
+    else if (hoursAdd <= 8 && daysInRowWorked >= 6)
+    {
+        doubleHours += hoursAdd;
+    }
+    else if (hoursAdd > 8 && daysInRowWorked >= 6)
+    {
+        tripleHours = hoursAdd - 8;
+        doubleHours += 8;
+    }
+    else
+    {
+        regularHours += hoursAdd;
+    }
+}
+
+string Hourly::serialize()
+{
+    string serialized = "";
+    serialized.append(to_string(id));
+    serialized.append(",");
+    serialized.append(name);
+    serialized.append(",");
+    serialized.append(employeeType);
+    serialized.append(",");
+    serialized.append(to_string(payRate));
+    serialized.append(",");
+    serialized.append(to_string(hiredDate));
+    serialized.append(",");
+    serialized.append(to_string(dayFired));
+
+    serialized.append(",");
+    serialized.append(to_string(lastDayWorked));
+    serialized.append(",");
+    serialized.append(to_string(daysInRowWorked));
+    serialized.append(",");
+    serialized.append(to_string(regularHours));
+    serialized.append(",");
+    serialized.append(to_string(overtimeHours));
+    serialized.append(",");
+    serialized.append(to_string(doubleHours));
+    serialized.append(",");
+    serialized.append(to_string(tripleHours));
+
+    return serialized;
 }
 
 Piecework::Piecework(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired) : itemsProduced(0)
@@ -77,6 +183,16 @@ Piecework::Piecework(int employeeID, string employeeName, string type, double em
     employeeType = type;
     payRate = employeePayRate;
     hiredDate = employeeDateHired;
+}
+
+Piecework::Piecework(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired, int numberProduced)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+    itemsProduced = numberProduced;
 }
 
 Piecework:: ~Piecework() {}
@@ -104,6 +220,27 @@ void Piecework::addPieces(int newItems)
     itemsProduced = itemsProduced + newItems;
 }
 
+string Piecework::serialize()
+{
+    string serialized = "";
+    serialized.append(to_string(id));
+    serialized.append(",");
+    serialized.append(name);
+    serialized.append(",");
+    serialized.append(employeeType);
+    serialized.append(",");
+    serialized.append(to_string(payRate));
+    serialized.append(",");
+    serialized.append(to_string(hiredDate));
+    serialized.append(",");
+    serialized.append(to_string(dayFired));
+
+    serialized.append(",");
+    serialized.append(to_string(itemsProduced));
+
+    return serialized;
+}
+
 Commission::Commission(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired) : salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0)
 {
     id = employeeID;
@@ -111,6 +248,18 @@ Commission::Commission(int employeeID, string employeeName, string type, double 
     employeeType = type;
     payRate = employeePayRate;
     hiredDate = employeeDateHired;
+}
+
+Commission::Commission(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired, double sales, double mediumSales, double largeSales)
+{
+    id = employeeID;
+    name = employeeName;
+    employeeType = type;
+    payRate = employeePayRate;
+    hiredDate = employeeDateHired;
+    salesAmount = sales;
+    mediumSalesAmount = mediumSales;
+    largeSalesAmount = largeSales;
 }
 
 Commission:: ~Commission() {}
@@ -151,4 +300,29 @@ void Commission::addSales(double newSales)
     {
         salesAmount = salesAmount + newSales;
     }
+}
+
+string Commission::serialize()
+{
+    string serialized = "";
+    serialized.append(to_string(id));
+    serialized.append(",");
+    serialized.append(name);
+    serialized.append(",");
+    serialized.append(employeeType);
+    serialized.append(",");
+    serialized.append(to_string(payRate));
+    serialized.append(",");
+    serialized.append(to_string(hiredDate));
+    serialized.append(",");
+    serialized.append(to_string(dayFired));
+
+    serialized.append(",");
+    serialized.append(to_string(salesAmount));
+    serialized.append(",");
+    serialized.append(to_string(mediumSalesAmount));
+    serialized.append(",");
+    serialized.append(to_string(largeSalesAmount));
+
+    return serialized;
 }

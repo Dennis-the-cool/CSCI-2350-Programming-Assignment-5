@@ -143,12 +143,14 @@
     <ClCompile Include="Hourly.cpp" />
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="TransactionDriver.cpp" />
+    <ClCompile Include="TransactionList.cpp" />
     <ClCompile Include="TransactionReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Hourly.h" />
     <ClInclude Include="Transaction.h" />
+    <ClInclude Include="TransactionList.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="HourlyInput.txt" />

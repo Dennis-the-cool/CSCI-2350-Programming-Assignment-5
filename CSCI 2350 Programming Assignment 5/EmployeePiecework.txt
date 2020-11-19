@@ -1,0 +1,3 @@
+1,John,piecework,0.810000,1,0,0
+2,Chris,piecework,0.500000,1,0,500
+3,Fred,piecework,0.260000,1,0,0

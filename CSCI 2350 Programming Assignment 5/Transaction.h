@@ -6,14 +6,15 @@ class Transaction
 {
 protected:
 	string transactionType;
-	int id;
+	int employeeID;
 public:
 	Transaction();
 	~Transaction();
 	void setTransactionType(string);
 	string getTransactionType();
-	void setID(int);
-	int getID();
+	void setEmployeeID(int);
+	int getEmployeeID();
+	virtual void updateValues() = 0;
 };
 class HireTransaction : public Transaction
 {
@@ -30,6 +31,7 @@ public:
 	string getEmployeeType();
 	void setPayRate(double);
 	double getPayRate();
+	void updateValues();
 };
 class HoursTransaction : public Transaction
 {
@@ -40,6 +42,7 @@ public:
 	~HoursTransaction();
 	void setHoursWorked(double);
 	double getHoursWorked();
+	void updateValues();
 };
 class PiecesTransaction : public Transaction
 {
@@ -49,7 +52,8 @@ public:
 	PiecesTransaction();
 	~PiecesTransaction();
 	void setItemsProduced(int);
-	int getItemsProduced()
+	int getItemsProduced();
+	void updateValues();
 };
 class SalesTransaction : public Transaction
 {
@@ -60,10 +64,12 @@ public:
 	~SalesTransaction();
 	void setSalesAmount(double);
 	double getSalesAmount();
+	void updateValues();
 };
 class TerminationTransaction : public Transaction
 {
 public:
 	TerminationTransaction();
 	~TerminationTransaction();
+	void updateValues();
 };

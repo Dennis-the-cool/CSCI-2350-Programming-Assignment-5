@@ -16,9 +16,9 @@ public:
     Employee();
     ~Employee();
     void termination(int);
-    void hire(int, string, string, double, int);
     virtual string payroll() = 0;
-    string getEmployeeType();
+    virtual string serialize() = 0;
+    int getID();
 };
 
 class Salary : public Employee
@@ -27,6 +27,7 @@ public:
     Salary(int, string, string, double, int);
     ~Salary();
     string payroll();
+    string serialize();
 };
 
 class Hourly : public Employee
@@ -40,8 +41,11 @@ private:
     double tripleHours;
 public:
     Hourly(int, string, string, double, int);
+    Hourly(int, string, string, double, int, int, int, double, double, double, double);
     ~Hourly();
     string payroll();
+    void addHours(double, int);
+    string serialize();
 };
 
 class Piecework : public Employee
@@ -50,9 +54,11 @@ private:
     int itemsProduced;
 public:
     Piecework(int, string, string, double, int);
+    Piecework(int, string, string, double, int, int);
     ~Piecework();
     string payroll();
     void addPieces(int);
+    string serialize();
 };
 
 class Commission : public Employee
@@ -63,7 +69,9 @@ private:
     double largeSalesAmount;
 public:
     Commission(int, string, string, double, int);
+    Commission(int, string, string, double, int, double, double, double);
     ~Commission();
     string payroll();
     void addSales(double);
+    string serialize();
 };

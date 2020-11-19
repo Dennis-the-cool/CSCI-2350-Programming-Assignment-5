@@ -6,11 +6,13 @@
     <ClCompile Include="TransactionReader.cpp" />
     <ClCompile Include="Hourly.cpp" />
     <ClCompile Include="TransactionDriver.cpp" />
+    <ClCompile Include="TransactionList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Transaction.h" />
     <ClInclude Include="Hourly.h" />
+    <ClInclude Include="TransactionList.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TestTransactionFile.txt" />

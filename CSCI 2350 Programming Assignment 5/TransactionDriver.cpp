@@ -27,7 +27,7 @@ Transaction* processTransactionLine(string line)
 		line = line.substr(line.find(",") + 1);
 		string payRateString = line;
 
-		HireTransaction* hireTransaction = new HireTransaction;
+		HireTransaction* hireTransaction = new HireTransaction();
 		hireTransaction->setName(name);
 		hireTransaction->setEmployeeType(employeeType);
 		converter << payRateString;
@@ -111,8 +111,6 @@ Employee* processEmployeeLine(string line)
 	line = line.substr(line.find(",") + 1);
 
 	int employeeID;
-	double payRate;
-	int dateHired;
 
 	stringstream converterID;
 
@@ -121,11 +119,12 @@ Employee* processEmployeeLine(string line)
 
 	stringstream converterPayRate;
 
+	double payRate;
 	converterPayRate << employeePayRate;
 	converterPayRate >> payRate;
 
 	stringstream converterDateHired;
-
+	int dateHired;
 	converterDateHired << employeeDateHired;
 	converterDateHired >> dateHired;
 
@@ -136,41 +135,128 @@ Employee* processEmployeeLine(string line)
 	if (employeeType.compare("salary") == 0)
 	{
 		// TODO: Write file initialization of salary employee
-		employee = new Salary(employeeID, employeeName, employeeType, payRate, dateHired);
+		if (payRate >= 4000.0)
+		{
+			employee = new Salary(employeeID, employeeName, employeeType, payRate, dateHired);
+		}
+		else
+		{
+			cout << "Illegal payrate.";
+			throw - 1;
+		}
 	}
 	else if (employeeType.compare("hourly") == 0)
 	{
 		// TODO: Write file initialization of hourly employee
-		employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired);
 		// lastDayWorked(0), daysInRowWorked(0), regularHours(0), overtimeHours(0), doubleHours(0), tripleHours(0)
+		string lastDayWorkedString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string daysInRowWorkedString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string regularHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string overtimeHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string doubleHoursString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string tripleHoursString = line;
+
+		int lastDayWorked;
+		stringstream convertLastDayWorked;
+		convertLastDayWorked << lastDayWorkedString;
+		convertLastDayWorked >> lastDayWorked;
+
+		int daysInRowWorked;
+		stringstream convertDaysInRowWorked;
+		convertDaysInRowWorked << daysInRowWorkedString;
+		convertDaysInRowWorked >> daysInRowWorked;
+
+		double regularHours;
+		stringstream convertRegularHours;
+		convertRegularHours << regularHoursString;
+		convertRegularHours >> regularHours;
+
+		double overtimeHours;
+		stringstream convertOvertimeHours;
+		convertOvertimeHours << overtimeHoursString;
+		convertOvertimeHours >> overtimeHours;
+
+		double doubleHours;
+		stringstream convertDoubleHours;
+		convertDoubleHours << doubleHoursString;
+		convertDoubleHours >> doubleHours;
+
+		double tripleHours;
+		stringstream convertTripleHours;
+		convertTripleHours << tripleHoursString;
+		convertTripleHours >> tripleHours;
+
+		if (payRate >= 10.0 && payRate <= 26.0)
+		{
+			employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired, lastDayWorked, daysInRowWorked, regularHours, overtimeHours, doubleHours, tripleHours);
+		}
+		else
+		{
+			cout << "Illegal payrate.";
+			throw - 1;
+		}
 	}
 	else if (employeeType.compare("piecework") == 0)
 	{
-		
-		if (payRate > 0.00 && payRate <= 1.00)
+		// itemsProduced(0)
+		string itemsProducedString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+
+		int itemsProduced;
+		stringstream convertItemsProduced;
+		convertItemsProduced << itemsProducedString;
+		convertItemsProduced >> itemsProduced;
+
+		if (payRate >= 0.0 && payRate <= 1.0)
 		{
-			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired);
+			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired, itemsProduced);
 		}
 		else
 		{
 			cout << "Illegal payrate.";
 			throw - 1;
 		}
-		// itemsProduced(0)
 	}
 	else if (employeeType.compare("commission") == 0)
 	{
-		// Write file initialization of commission employee
+		// TODO: Write file initialization of commission employee
+		// salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0)
+		string salesAmountString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string mediumSalesAmountString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+		string largeSalesAmountString = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+
+		double salesAmount;
+		stringstream convertSalesAmount;
+		convertSalesAmount << salesAmountString;
+		convertSalesAmount >> salesAmount;
+
+		double mediumSalesAmount;
+		stringstream convertMediumSalesAmount;
+		convertMediumSalesAmount << mediumSalesAmountString;
+		convertMediumSalesAmount >> mediumSalesAmount;
+
+		double largeSalesAmount;
+		stringstream convertLargeSalesAmount;
+		convertLargeSalesAmount << largeSalesAmountString;
+		convertLargeSalesAmount >> largeSalesAmount;
+
 		if (payRate >= 0.03 && payRate <= 0.05)
 		{
-			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired);
+			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired, salesAmount, mediumSalesAmount, largeSalesAmount);
 		}
 		else
 		{
 			cout << "Illegal payrate.";
 			throw - 1;
 		}
-		// salesAmount(0), mediumSalesAmount(0), largeSalesAmount(0)
 	}
 	else
 	{
@@ -181,43 +267,217 @@ Employee* processEmployeeLine(string line)
 	return employee;
 }
 
+void processTransaction(Transaction* transaction, Employee* employee, int day)
+{
+	if (HoursTransaction* t = dynamic_cast<HoursTransaction*>(transaction))
+	{
+		Hourly* h = dynamic_cast<Hourly*>(employee);
+		h->addHours(t->getHoursWorked(), day);
+	}
+	else if (PiecesTransaction* t = dynamic_cast<PiecesTransaction*>(transaction))
+	{
+		Piecework* p = dynamic_cast<Piecework*>(employee);
+		p->addPieces(t->getItemsProduced());
+	}
+	else if (SalesTransaction* t = dynamic_cast<SalesTransaction*>(transaction))
+	{
+		Commission* c = dynamic_cast<Commission*>(employee);
+		c->addSales(t->getSalesAmount());
+	}
+	else if (TerminationTransaction* t = dynamic_cast<TerminationTransaction*>(transaction))
+	{
+		employee->termination(day);
+	}
+	else
+	{
+		// TODO: Process error
+		cout << "Error processing transaction" << endl;
+		throw - 1;
+	}
+}
+
+Employee* processHire(HireTransaction* transaction, int day)
+{
+	int id = transaction->getEmployeeID();
+	string name = transaction->getName();
+	string type = transaction->getEmployeeType();
+	double pay = transaction->getPayRate();
+
+	if (type.compare("salary") == 0)
+	{
+		return new Salary(id, name, type, pay, day);
+	}
+	else if (type.compare("hourly") == 0)
+	{
+		return new Hourly(id, name, type, pay, day);
+	}
+	else if (type.compare("piecework") == 0)
+	{
+		return new Piecework(id, name, type, pay, day);
+	}
+	else if (type.compare("commission") == 0)
+	{
+		return new Commission(id, name, type, pay, day);
+	}
+
+	return nullptr;
+}
+
 void processTransactionFile(string transactionFileString, string employeeFileString)
 {
-	// TODO: Process transaction file
+	ifstream transactionFile(transactionFileString);
+	string dayString;
+	getline(transactionFile, dayString);
+
+	stringstream dayConverter;
+	dayConverter << dayString;
+	int day;
+	dayConverter >> day;
+
+	ifstream employeeFile(employeeFileString);
+	string currentTransaction;
+	string currentEmployee;
+	string finalOutput = "";
+
+	getline(transactionFile, currentTransaction);
+	Employee* employee = nullptr;
+	if (getline(employeeFile, currentEmployee))
+	{
+		employee = processEmployeeLine(currentEmployee);
+	}
+	Transaction* transaction = processTransactionLine(currentTransaction);
+
+	while (true)
+	{
+		if (HireTransaction* t = dynamic_cast<HireTransaction*>(transaction))
+		{
+			// Hired employees currently can't have any other transactions within the same day
+			if (employee != nullptr)
+			{
+				finalOutput.append(employee->serialize());
+				finalOutput.append("\n");
+				delete employee;
+			}
+			employee = processHire(t, day);
+			if (!getline(transactionFile, currentTransaction))
+			{
+				finalOutput.append(employee->serialize());
+				finalOutput.append("\n");
+				delete employee;
+				break;
+			}
+			delete transaction;
+			transaction = processTransactionLine(currentTransaction);
+		}
+		else if (employee->getID() == transaction->getEmployeeID())
+		{
+			processTransaction(transaction, employee, day);
+			if (!getline(transactionFile, currentTransaction))
+			{
+				break;
+			}
+			delete transaction;
+			transaction = processTransactionLine(currentTransaction);
+			continue;
+		}
+		else if (employee->getID() < transaction->getEmployeeID())
+		{
+			getline(employeeFile, currentEmployee);
+			finalOutput.append(employee->serialize());
+			finalOutput.append("\n");
+			delete employee;
+			employee = processEmployeeLine(currentEmployee);
+			continue;
+		}
+		else
+		{
+			cout << "Error processing transaction" << endl;
+			throw - 1;
+		}
+	}
+
+	employeeFile.close();
+	transactionFile.close();
+	ofstream employeeRewriteFile(employeeFileString);
+	employeeRewriteFile << finalOutput;
+
 }
 
 void sortTransactionFile(string transactionInputFileString, string transactionOutputFileString)
 {
-	ifstream transactionInputFile;
+	ifstream transactionInputFile(transactionInputFileString);
 	string day;
 	getline(transactionInputFile, day);
-	string transaction;
+	string transactionString;
 
 	TransactionList transactionList;
 
-	while (getline(transactionInputFile, transaction))
+	while (getline(transactionInputFile, transactionString))
 	{
-		Transaction* t = processTransactionLine(transaction);
+		Transaction* t = processTransactionLine(transactionString);
 		transactionList.addTransaction(t);
 	}
 
-	ofstream transactionOutputFile;
+	ofstream transactionOutputFile(transactionOutputFileString);
 	transactionOutputFile << day;
 
 	while (!transactionList.isEmpty())
 	{
-		transactionOutputFile << endl << transaction;
+		Transaction* transaction = transactionList.removeTransaction();
+		transactionString = transaction->getTransactionType();
+		transactionString.append(",");
+		transactionString.append(to_string(transaction->getEmployeeID()));
+
+		if (HireTransaction* t = dynamic_cast<HireTransaction*>(transaction))
+		{
+
+			transactionString.append(",");
+			// name, employee type, pay rate
+			transactionString.append(t->getName());
+			transactionString.append(",");
+			transactionString.append(t->getEmployeeType());
+			transactionString.append(",");
+			transactionString.append(to_string(t->getPayRate()));
+		}
+		else if (HoursTransaction* t = dynamic_cast<HoursTransaction*>(transaction))
+		{
+			transactionString.append(",");
+			transactionString.append(to_string(t->getHoursWorked()));
+		}
+		else if (PiecesTransaction* t = dynamic_cast<PiecesTransaction*>(transaction))
+		{
+			transactionString.append(",");
+			transactionString.append(to_string(t->getItemsProduced()));
+		}
+		else if (SalesTransaction* t = dynamic_cast<SalesTransaction*>(transaction))
+		{
+			transactionString.append(",");
+			transactionString.append(to_string(t->getSalesAmount()));
+		}
+		else if (TerminationTransaction* t = dynamic_cast<TerminationTransaction*>(transaction))
+		{
+			// No other append necessary
+		}
+		else
+		{
+			// TODO: Process error
+			cout << "Error processing transaction" << endl;
+			throw - 1;
+		}
+
+		transactionOutputFile << endl << transactionString;
+
+		cout << "Done processing file";
 	}
 
-	// TODO: Finish transaction sorting
+	transactionInputFile.close();
+	transactionOutputFile.close();
 }
 
 void printPayroll(string employeeFile, string payrollOutputFile)
 {
-	ifstream inputFile;
-	inputFile.open(employeeFile);
-	ofstream outputFile;
-	outputFile.open(payrollOutputFile);
+	ifstream inputFile(employeeFile);
+	ofstream outputFile(payrollOutputFile);
 	string line;
 	while (getline(inputFile, line))
 	{
@@ -225,6 +485,9 @@ void printPayroll(string employeeFile, string payrollOutputFile)
 		string payrollOutput = employee->payroll();
 		outputFile << payrollOutput << endl;
 	}
+
+	inputFile.close();
+	outputFile.close();
 }
 
 int main()
@@ -274,4 +537,8 @@ int main()
 
 		printPayroll(employeeFile, payrollFile);
 	}
+
+	cout << "Finished";
+
+	return 0;
 }
