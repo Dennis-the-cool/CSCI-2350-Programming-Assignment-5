@@ -16,7 +16,6 @@ public:
 	Employee();
 	~Employee();
 	void termination(int);
-	void hire(int, string, string, double, int);
 	virtual string payroll() = 0;
 };
 
@@ -41,6 +40,7 @@ public:
 	Hourly(int, string, string, double, int);
 	~Hourly();
 	string payroll();
+    void addHours(double, int);
 };
 
 class Piecework: public Employee

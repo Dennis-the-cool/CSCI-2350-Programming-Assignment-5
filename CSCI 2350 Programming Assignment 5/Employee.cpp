@@ -62,7 +62,54 @@ Hourly:: ~Hourly() {}
 
 string Hourly:: payroll()
 {
-  return "test";
+  double regularHoursPay = regularHours * payRate;
+  double overtimeHoursPay = overtimeHours * payRate * 1.5;
+  double doubleHoursPay = doubleHours * payRate * 2.0;
+  double tripleHoursPay = tripleHours * payRate * 3.0;
+  
+  double totalPay = regularHoursPay + overtimeHoursPay + doubleHoursPay + tripleHoursPay;
+
+  stringstream convertTotalPay;
+  
+  string output;
+
+  convertTotalPay << totalPay;
+  convertTotalPay >> output;
+
+  return output;
+}
+
+void Hourly:: addHours(double hoursAdd, int day)
+{
+    if(day == (lastDayWorked + 1))
+    {
+        daysInRowWorked++;
+    }    
+    else
+    {
+        daysInRowWorked = 1;
+    }
+    
+    lastDayWorked = day;
+
+    if(hoursAdd > 8 && daysInRowWorked < 6)
+    {
+        overtimeHours += hoursAdd - 8;
+        regularHours += 8;
+    }
+    else if(hoursAdd <= 8 && daysInRowWorked >= 6)
+    {
+        doubleHours += hoursAdd;
+    }
+    else if(hoursAdd > 8 && daysInRowWorked >= 6)
+    {
+        tripleHours = hoursAdd - 8;
+        doubleHours += 8;
+    }
+    else
+    {
+        regularHours += hoursAdd;
+    }
 }
 
 Piecework:: Piecework(int employeeID, string employeeName, string type, double employeePayRate, int employeeDateHired): itemsProduced(0) 
