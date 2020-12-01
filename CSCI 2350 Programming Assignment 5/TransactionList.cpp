@@ -82,8 +82,15 @@ void TransactionList::addTransaction(Transaction* newTransaction)
 	Node* currentNode = head;
 	while (currentNode != nullptr)
 	{
-		if (currentNode->priority >= newNode->priority)
+		if (currentNode->transaction->getEmployeeID() >= newNode->transaction->getEmployeeID())
 		{
+			if (currentNode->transaction->getEmployeeID() == newNode->transaction->getEmployeeID())
+			{
+				while (currentNode->priority <= newNode->priority && currentNode->transaction->getEmployeeID() == newNode->transaction->getEmployeeID())
+				{
+					currentNode = currentNode->next;
+				}
+			}
 			if (currentNode == tail)
 			{
 				break;

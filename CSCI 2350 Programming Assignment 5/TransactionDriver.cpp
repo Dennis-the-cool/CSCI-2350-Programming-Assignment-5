@@ -109,16 +109,14 @@ Employee* processEmployeeLine(string line)
 	line = line.substr(line.find(",") + 1);
 	string employeeDateHired = line.substr(0, line.find(","));
 	line = line.substr(line.find(",") + 1);
+	string employeeDateFired;
 
 	int employeeID;
-
 	stringstream converterID;
-
 	converterID << employeeIDString;
 	converterID >> employeeID;
 
 	stringstream converterPayRate;
-
 	double payRate;
 	converterPayRate << employeePayRate;
 	converterPayRate >> payRate;
@@ -127,6 +125,21 @@ Employee* processEmployeeLine(string line)
 	int dateHired;
 	converterDateHired << employeeDateHired;
 	converterDateHired >> dateHired;
+
+	if (line.find(",") < 0)
+	{
+		employeeDateFired = line;
+	}
+	else
+	{
+		employeeDateFired = line.substr(0, line.find(","));
+		line = line.substr(line.find(",") + 1);
+	}
+
+	stringstream converterDateFired;
+	int dateFired;
+	converterDateFired << employeeDateFired;
+	converterDateFired >> dateFired;
 
 	Employee* employee;
 
@@ -137,7 +150,7 @@ Employee* processEmployeeLine(string line)
 		// TODO: Write file initialization of salary employee
 		if (payRate >= 4000.0)
 		{
-			employee = new Salary(employeeID, employeeName, employeeType, payRate, dateHired);
+			employee = new Salary(employeeID, employeeName, employeeType, payRate, dateHired, dateFired);
 		}
 		else
 		{
@@ -193,7 +206,7 @@ Employee* processEmployeeLine(string line)
 
 		if (payRate >= 10.0 && payRate <= 26.0)
 		{
-			employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired, lastDayWorked, daysInRowWorked, regularHours, overtimeHours, doubleHours, tripleHours);
+			employee = new Hourly(employeeID, employeeName, employeeType, payRate, dateHired, dateFired, lastDayWorked, daysInRowWorked, regularHours, overtimeHours, doubleHours, tripleHours);
 		}
 		else
 		{
@@ -214,7 +227,7 @@ Employee* processEmployeeLine(string line)
 
 		if (payRate >= 0.0 && payRate <= 1.0)
 		{
-			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired, itemsProduced);
+			employee = new Piecework(employeeID, employeeName, employeeType, payRate, dateHired, dateFired, itemsProduced);
 		}
 		else
 		{
@@ -250,7 +263,7 @@ Employee* processEmployeeLine(string line)
 
 		if (payRate >= 0.03 && payRate <= 0.05)
 		{
-			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired, salesAmount, mediumSalesAmount, largeSalesAmount);
+			employee = new Commission(employeeID, employeeName, employeeType, payRate, dateHired, dateFired, salesAmount, mediumSalesAmount, largeSalesAmount);
 		}
 		else
 		{
@@ -374,6 +387,9 @@ void processTransactionFile(string transactionFileString, string employeeFileStr
 			processTransaction(transaction, employee, day);
 			if (!getline(transactionFile, currentTransaction))
 			{
+				finalOutput.append(employee->serialize());
+				finalOutput.append("\n");
+				delete employee;
 				break;
 			}
 			delete transaction;
@@ -400,6 +416,7 @@ void processTransactionFile(string transactionFileString, string employeeFileStr
 	transactionFile.close();
 	ofstream employeeRewriteFile(employeeFileString);
 	employeeRewriteFile << finalOutput;
+	employeeRewriteFile.close();
 
 }
 

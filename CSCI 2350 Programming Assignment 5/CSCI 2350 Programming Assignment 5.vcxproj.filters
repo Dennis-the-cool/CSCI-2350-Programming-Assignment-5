@@ -3,15 +3,12 @@
   <ItemGroup>
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Transaction.cpp" />
-    <ClCompile Include="TransactionReader.cpp" />
-    <ClCompile Include="Hourly.cpp" />
     <ClCompile Include="TransactionDriver.cpp" />
     <ClCompile Include="TransactionList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Transaction.h" />
-    <ClInclude Include="Hourly.h" />
     <ClInclude Include="TransactionList.h" />
   </ItemGroup>
   <ItemGroup>
@@ -29,5 +26,7 @@
     <Text Include="PieceworkInput.txt" />
     <Text Include="PieceworkInput2.txt" />
     <Text Include="PieceworkInput3.txt" />
+    <Text Include="CommissionInputEvan.txt" />
+    <Text Include="EmployeePayrollCheck.txt" />
   </ItemGroup>
 </Project>

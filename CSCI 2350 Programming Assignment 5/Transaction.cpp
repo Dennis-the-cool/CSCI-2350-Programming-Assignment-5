@@ -1,12 +1,10 @@
 #include "Transaction.h"
 
-Transaction::Transaction() : transactionType(), employeeID()
-{
-}
+Transaction::Transaction() : transactionType(""), employeeID(0)
+{}
 
 Transaction::~Transaction()
-{
-}
+{}
 
 void Transaction::setTransactionType(string newTransactionType)
 {
@@ -29,13 +27,11 @@ int Transaction::getEmployeeID()
 	return employeeID;
 }
 
-HireTransaction::HireTransaction() : name(), employeeType(), payRate()
-{
-}
+HireTransaction::HireTransaction() : name(""), employeeType(""), payRate(0.0)
+{}
 
 HireTransaction::~HireTransaction()
-{
-}
+{}
 
 void HireTransaction::setName(string newName)
 {
@@ -68,16 +64,13 @@ double HireTransaction::getPayRate()
 }
 
 void HireTransaction::updateValues()
-{
-}
+{}
 
 HoursTransaction::HoursTransaction() : hoursWorked()
-{
-}
+{}
 
 HoursTransaction::~HoursTransaction()
-{
-}
+{}
 
 void HoursTransaction::setHoursWorked(double newHoursWorked)
 {
@@ -90,16 +83,13 @@ double HoursTransaction::getHoursWorked()
 }
 
 void HoursTransaction::updateValues()
-{
-}
+{}
 
-PiecesTransaction::PiecesTransaction() : itemsProduced()
-{
-}
+PiecesTransaction::PiecesTransaction() : itemsProduced(0)
+{}
 
 PiecesTransaction::~PiecesTransaction()
-{
-}
+{}
 
 void PiecesTransaction::setItemsProduced(int newItemsProduced)
 {
@@ -112,16 +102,13 @@ int PiecesTransaction::getItemsProduced()
 }
 
 void PiecesTransaction::updateValues()
-{
-}
+{}
 
-SalesTransaction::SalesTransaction() : salesAmount()
-{
-}
+SalesTransaction::SalesTransaction() : salesAmount(0)
+{}
 
 SalesTransaction::~SalesTransaction()
-{
-}
+{}
 
 void SalesTransaction::setSalesAmount(double newSalesAmount)
 {
@@ -134,17 +121,13 @@ double SalesTransaction::getSalesAmount()
 }
 
 void SalesTransaction::updateValues()
-{
-}
+{}
 
 TerminationTransaction::TerminationTransaction()
-{
-}
+{}
 
 TerminationTransaction::~TerminationTransaction()
-{
-}
+{}
 
 void TerminationTransaction::updateValues()
-{
-}
+{}

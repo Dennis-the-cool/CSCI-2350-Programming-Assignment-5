@@ -1,0 +1,5 @@
+1
+hire,7,Gav,commission,.035
+hire,8,Nyx,commission,.03
+hire,9,Mag,commission,.04
+hire,10,Moe,commission,.05
